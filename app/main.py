@@ -1,5 +1,6 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 import os
 import shutil
 
@@ -10,6 +11,20 @@ from app.services.rag_service import index_pdf_chunks, query_pdf_with_llm
 from app.services.llm_service import LLMService
 
 app = FastAPI()
+
+# allow your React frontend (Vite dev server runs on 5173)
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,       # frontend URLs
+    allow_credentials=True,
+    allow_methods=["*"],         # allow all HTTP methods (including OPTIONS)
+    allow_headers=["*"],         # allow all headers
+)
 
 UPLOAD_DIR = "./data/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)

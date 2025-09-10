@@ -8,7 +8,6 @@ PyMuPDF==1.24.10       # for PDF text extraction
 pdfplumber==0.11.4     # optional (better table extraction)
 
 # --- Embeddings & Vector Store ---
-faiss-cpu==1.8.0       # local vector search
 sentence-transformers==3.0.1  # HuggingFace embeddings
 
 # --- LLMs / OpenAI ---
