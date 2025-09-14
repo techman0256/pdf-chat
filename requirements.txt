@@ -5,16 +5,13 @@ pydantic==2.9.2
 
 # --- PDF Processing ---
 PyMuPDF==1.24.10       # for PDF text extraction
-pdfplumber==0.11.4     # optional (better table extraction)
 
 # --- Embeddings & Vector Store ---
 sentence-transformers==3.0.1  # HuggingFace embeddings
 
-# --- LLMs / OpenAI ---
-openai==1.43.0         # OpenAI API client
-
+google-generativeai
 # --- Optional Helpers ---
-langchain==0.2.11      # (optional) chains for RAG
-llama-index==0.10.30   # (optional) parsing, indexing helpers
+# langchain==0.2.11      # (optional) chains for RAG
+# llama-index==0.10.30   # (optional) parsing, indexing helpers
 python-dotenv==1.0.1   # for environment variables
 chromadb
