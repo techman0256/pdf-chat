@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import os
 import shutil
+import uvicorn
 
 # from app.services.pdf_service import extract_pages
 from app.services.pdf_service import extract_pages
@@ -26,8 +27,13 @@ app.add_middleware(
     allow_headers=["*"],         # allow all headers
 )
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port, reload=True)
+
 UPLOAD_DIR = "./data/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
+
 
 @app.get("/")
 def home():
